@@ -1,0 +1,119 @@
+/* Removed hardcoded :root variables as they are now dynamically generated */
+
+/* Buttons */
+.fcrm-search-bar .btn.btn-primary.submit-btn {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: var(--fcrm-primary-button);
+  color: var(--fcrm-primary-button-text);
+  border-radius: 6px;
+  padding: 12px 24px;
+  line-height: 1.5;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.fcrm-search-bar .btn.btn-primary.submit-btn:hover {
+  background-color: var(--fcrm-primary-button-hover);
+  color: var(--fcrm-primary-button-hover-text);
+}
+
+.firehawk-crm-tributes .fcrm-search-bar .reset-btn {
+  font-size: 1em !important;
+  color: var(--fcrm-link-color) !important;
+  right: 100px !important;
+}
+
+.btn-light.add-btn.write-message-btn {
+  background: var(--fcrm-primary-button);
+  color: var(--fcrm-primary-button-text);
+}
+
+.btn.btn-light.add-btn.write-message-btn:hover {
+  border: 1px solid var(--fcrm-secondary-color);
+  background: transparent;
+}
+
+.firehawk-crm-tributes #fcrm-tributes-page-menu .nav-link {
+  color: var(--fcrm-link-color);
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+  outline: none !important;
+  border: 1px solid var(--fcrm-focus-border-color);
+}
+
+/* Focus */
+.firehawk-crm-tributes .btn:focus, .btn-check:focus + .firehawk-crm-tributes .btn {
+  box-shadow: 0 0 0 0.25rem var(--fcrm-focus-shadow-color);
+}
+
+/* Grid */
+.firehawk-crm.firehawk-crm-large-grid .grid-item .title {
+  color: var(--fcrm-secondary-color);
+  font-size: 20px !important;
+}
+
+.firehawk-crm.firehawk-crm-large-grid .grid-item .dates {
+  color: var(--fcrm-secondary-color);
+}
+
+.firehawk-crm.firehawk-crm-large-grid .grid-item {
+  border: 1px solid rgba(112, 108, 102, 0.4);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(112, 108, 102, 0.2);
+  overflow: hidden;
+  padding: 15px;
+  background: #ffffff;
+}
+
+.firehawk-crm.firehawk-crm-large-grid .grid-item.linked:hover {
+  background-color: rgba(112, 108, 102, 0.2);
+}
+
+/* Search Box */
+.firehawk-crm-tributes .form-control {
+  height: initial !important;
+  padding: 12px 24px !important;
+}
+
+.firehawk-crm-tributes #grid-search {
+  font-size: 15px; /* Change font size */
+}
+
+.fcrm-search-bar .form-control::placeholder {
+  text-transform: uppercase; /* Make placeholder text uppercase */
+  font-size: 10px;
+}
+
+/* Pagination */
+.fcrm-pagination .fcrm-pagination-pages li {
+  border: 1px solid var(--fcrm-secondary-color) !important;
+  background: var(--fcrm-primary-color) !important;
+}
+
+.fcrm-pagination .fcrm-pagination-pages li a {
+  color: var(--fcrm-secondary-color) !important;
+}
+
+.fcrm-pagination .fcrm-pagination-pages li.active > a {
+  background: var(--fcrm-primary-button);
+  color: var(--fcrm-primary-button-text) !important;
+}
+
+/* Highlights */
+.btn-check:checked + .firehawk-crm-tributes .btn-primary:focus,
+.btn-check:active + .firehawk-crm-tributes .btn-primary:focus,
+.firehawk-crm-tributes .btn-primary:active:focus,
+.firehawk-crm-tributes .btn-primary.active:focus,
+.show > .firehawk-crm-tributes .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem var(--fcrm-primary-shadow)!important;
+}
+
+.firehawk-crm-tributes .form-control:focus {
+  box-shadow: 0 0 0 0.25rem var(--fcrm-primary-shadow);
+  border-color: rgba(112, 108, 102, 0.5);
+}
