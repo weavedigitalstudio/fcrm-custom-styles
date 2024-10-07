@@ -1,4 +1,3 @@
-/* Removed hardcoded :root variables as they are now dynamically generated */
 
 /* Buttons */
 .fcrm-search-bar .btn.btn-primary.submit-btn {
@@ -38,13 +37,13 @@
   background: transparent;
 }
 
-.firehawk-crm-tributes #fcrm-tributes-page-menu .nav-link {
+/* .firehawk-crm-tributes #fcrm-tributes-page-menu .nav-link {
   color: var(--fcrm-link-color);
-  background-color: #f8f9fa;
+  background-color: #;
   border-color: #f8f9fa;
   outline: none !important;
   border: 1px solid var(--fcrm-focus-border-color);
-}
+} */
 
 /* Focus */
 .firehawk-crm-tributes .btn:focus, .btn-check:focus + .firehawk-crm-tributes .btn {
@@ -62,16 +61,16 @@
 }
 
 .firehawk-crm.firehawk-crm-large-grid .grid-item {
-  border: 1px solid rgba(112, 108, 102, 0.4);
+  border: 1px solid var(--fcrm-focus-border-color);
   border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(112, 108, 102, 0.2);
+  box-shadow: 0 10px 30px var(--fcrm-primary-shadow);
   overflow: hidden;
   padding: 15px;
   background: #ffffff;
 }
 
 .firehawk-crm.firehawk-crm-large-grid .grid-item.linked:hover {
-  background-color: rgba(112, 108, 102, 0.2);
+  background-color: var(--fcrm-focus-shadow-color);
 }
 
 /* Search Box */
@@ -115,5 +114,5 @@
 
 .firehawk-crm-tributes .form-control:focus {
   box-shadow: 0 0 0 0.25rem var(--fcrm-primary-shadow);
-  border-color: rgba(112, 108, 102, 0.5);
+  border-color: var(--fcrm-focus-shadow-color);
 }

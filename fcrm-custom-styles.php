@@ -13,13 +13,6 @@
  * Requires PHP:      7.2
  */
 
-/*
- Changelog:
-
- Version 0.1.0
- - Initial release of the plugin.
- */
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -103,61 +96,96 @@ function weave_fcrm_register_settings() {
 		return;
 	}
 
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_link_color' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_primary_button' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_primary_button_text' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_primary_button_hover' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_primary_button_hover_text' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_secondary_button' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_secondary_button_text' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_secondary_button_hover' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_secondary_button_hover_text' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_focus_shadow_color' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_focus_border_color' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_primary_color' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_secondary_color' );
-	register_setting( 'weave_fcrm_style_settings_group', 'fcrm_primary_shadow' );
+	// Register settings using dashes in both the database and CSS variable names
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-link-color' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-primary-button' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-primary-button-text' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-primary-button-hover' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-primary-button-hover-text' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-secondary-button' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-secondary-button-text' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-secondary-button-hover' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-secondary-button-hover-text' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-focus-shadow-color' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-focus-border-color' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-primary-color' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-secondary-color' );
+	register_setting( 'weave_fcrm_style_settings_group', 'fcrm-primary-shadow' );
 
+	// Add the settings section
 	add_settings_section( 'weave_fcrm_color_section', 'Colour Settings', null, 'weave-fcrm-style-settings' );
 
-	add_settings_field( 'fcrm_primary_color', 'Primary Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_primary_color' ) );
-	add_settings_field( 'fcrm_secondary_color', 'Secondary Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_secondary_color' ) );
-	add_settings_field( 'fcrm_link_color', 'Link Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_link_color' ) );
-	add_settings_field( 'fcrm_primary_button', 'Primary Button Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_primary_button' ) );
-	add_settings_field( 'fcrm_primary_button_text', 'Primary Button Text Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_primary_button_text' ) );
-	add_settings_field( 'fcrm_primary_button_hover', 'Primary Button Hover Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_primary_button_hover' ) );
-	add_settings_field( 'fcrm_primary_button_hover_text', 'Primary Button Hover Text Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_primary_button_hover_text' ) );
-	add_settings_field( 'fcrm_secondary_button', 'Secondary Button Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_secondary_button' ) );
-	add_settings_field( 'fcrm_secondary_button_text', 'Secondary Button Text Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_secondary_button_text' ) );
-	add_settings_field( 'fcrm_secondary_button_hover', 'Secondary Button Hover Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_secondary_button_hover' ) );
-	add_settings_field( 'fcrm_secondary_button_hover_text', 'Secondary Button Hover Text Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_secondary_button_hover_text' ) );
-	add_settings_field( 'fcrm_focus_shadow_color', 'Focus Shadow Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_focus_shadow_color' ) );
-	add_settings_field( 'fcrm_focus_border_color', 'Focus Border Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_focus_border_color' ) );
-	add_settings_field( 'fcrm_primary_shadow', 'Primary Shadow Colour [box shading]', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm_primary_shadow' ) );
-	}
-	add_action( 'admin_init', 'weave_fcrm_register_settings' );
-	
-// Display a colour picker input field
-function weave_fcrm_color_picker_field( $args ) {
-	$option = get_option( $args['label_for'] );
-	echo '<input type="text" id="' . esc_attr( $args['label_for'] ) . '" name="' . esc_attr( $args['label_for'] ) . '" value="' . esc_attr( $option ) . '" class="weave-color-picker" />';
+	add_settings_field( 'fcrm-link-color', 'Link Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-link-color' ) );
+	add_settings_field( 'fcrm-primary-color', 'Primary Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-primary-color' ) );
+	add_settings_field( 'fcrm-secondary-color', 'Secondary Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-secondary-color' ) );
+	add_settings_field( 'fcrm-primary-button', 'Primary Button Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-primary-button' ) );
+	add_settings_field( 'fcrm-primary-button-text', 'Primary Button Text Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-primary-button-text' ) );
+	add_settings_field( 'fcrm-primary-button-hover', 'Primary Button Hover Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-primary-button-hover' ) );
+	add_settings_field( 'fcrm-primary-button-hover-text', 'Primary Button Hover Text Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-primary-button-hover-text' ) );
+	add_settings_field( 'fcrm-secondary-button', 'Secondary Button Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-secondary-button' ) );
+	add_settings_field( 'fcrm-secondary-button-text', 'Secondary Button Text Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-secondary-button-text' ) );
+	add_settings_field( 'fcrm-secondary-button-hover', 'Secondary Button Hover Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-secondary-button-hover' ) );
+	add_settings_field( 'fcrm-secondary-button-hover-text', 'Secondary Button Hover Text Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-secondary-button-hover-text' ) );
+	add_settings_field( 'fcrm-focus-shadow-color', 'Focus Shadow Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-focus-shadow-color' ) );
+	add_settings_field( 'fcrm-focus-border-color', 'Focus Border Colour', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-focus-border-color' ) );
+	add_settings_field( 'fcrm-primary-shadow', 'Primary Shadow Colour [box shading]', 'weave_fcrm_color_picker_field', 'weave-fcrm-style-settings', 'weave_fcrm_color_section', array( 'label_for' => 'fcrm-primary-shadow' ) );
 }
-
-// Add color picker script to settings page
+add_action( 'admin_init', 'weave_fcrm_register_settings' );
+	
 function weave_fcrm_enqueue_color_picker( $hook_suffix ) {
+	// Check if we are on the desired settings page
 	if ( 'toplevel_page_weave-fcrm-style-settings' !== $hook_suffix ) {
 		return;
 	}
+
+	// Enqueue the default WordPress color picker script and style
 	wp_enqueue_style( 'wp-color-picker' );
-	wp_enqueue_script( 'weave-fcrm-color-picker', WEAVE_FCRM_PLUGIN_URL . 'color-picker.js', array( 'wp-color-picker' ), false, true );
+
+	// Register and enqueue the wp-color-picker-alpha script
+	wp_register_script(
+		'wp-color-picker-alpha',
+		plugin_dir_url( __FILE__ ) . 'js/wp-color-picker-alpha.js', // Correct path to the alpha script
+		array( 'wp-color-picker' ), // Make sure wp-color-picker is a dependency
+		'3.0.0',
+		true
+	);
+
+	// Add inline script to initialize the color picker with alpha options and force reinitialization
+	wp_add_inline_script(
+		'wp-color-picker-alpha',
+		'jQuery(document).ready(function($) {
+			$(".weave-color-picker").wpColorPicker({
+				palettes: true, // Show predefined color palettes
+				defaultColor: "", // Default value if none is set
+				showInput: true,  // Show input field for manual input
+				allowEmpty: true, // Allow empty values
+				alpha: true,      // Enable alpha channel (transparency) support
+				mode: "rgba",     // Set the mode to RGBA to enable the alpha slider
+				clear: function() {
+					console.log("Color cleared");
+					$(this).val("");
+				}
+			});
+		});'
+	);
+
+	// Enqueue the wp-color-picker-alpha script
+	wp_enqueue_script( 'wp-color-picker-alpha' );
 }
 add_action( 'admin_enqueue_scripts', 'weave_fcrm_enqueue_color_picker' );
+
+function weave_fcrm_color_picker_field( $args ) {
+	$option = get_option( $args['label_for'] );
+
+	// Allow RGBA values to be set or pasted, or use default hex values
+	echo '<input type="text" id="' . esc_attr( $args['label_for'] ) . '" name="' . esc_attr( $args['label_for'] ) . '" value="' . esc_attr( $option ) . '" class="weave-color-picker" />';
+}
 
 // Generate dynamic CSS based on settings
 function weave_generate_dynamic_css() {
 	$custom_css = ":root {";
 
-	// Define the CSS variables
+	// Define the CSS variables and use the same names to retrieve them
 	$variables = array(
 		'fcrm-link-color',
 		'fcrm-primary-color',
@@ -177,9 +205,9 @@ function weave_generate_dynamic_css() {
 
 	// Loop through each variable and add it to the CSS only if it has a non-empty value
 	foreach ( $variables as $variable ) {
-		$value = get_option( $variable, '' ); // No default values provided
+		$value = get_option( $variable, '' ); // Use the exact same option names in the database
 		if ( ! empty( $value ) ) {
-			$custom_css .= "--$variable: $value;";
+			$custom_css .= "--$variable: $value;"; // Add semicolon at the end of each variable definition
 		}
 	}
 
@@ -214,22 +242,22 @@ function weave_fcrm_display_reset_notice() {
 
 // Function to reset all custom style options to default (delete them from the database)
 function weave_fcrm_reset_options() {
-	// List of all options to delete
+	// List of all options to delete (using dashes)
 	$options = array(
-		'fcrm_link_color',
-		'fcrm_primary_button',
-		'fcrm_primary_button_text',
-		'fcrm_primary_button_hover',
-		'fcrm_primary_button_hover_text',
-		'fcrm_secondary_button',
-		'fcrm_secondary_button_text',
-		'fcrm_secondary_button_hover',
-		'fcrm_secondary_button_hover_text',
-		'fcrm_focus_shadow_color',
-		'fcrm_focus_border_color',
-		'fcrm_primary_color',
-		'fcrm_secondary_color',
-		'fcrm_primary_shadow'
+		'fcrm-link-color',
+		'fcrm-primary-button',
+		'fcrm-primary-button-text',
+		'fcrm-primary-button-hover',
+		'fcrm-primary-button-hover-text',
+		'fcrm-secondary-button',
+		'fcrm-secondary-button-text',
+		'fcrm-secondary-button-hover',
+		'fcrm-secondary-button-hover-text',
+		'fcrm-focus-shadow-color',
+		'fcrm-focus-border-color',
+		'fcrm-primary-color',
+		'fcrm-secondary-color',
+		'fcrm-primary-shadow'
 	);
 
 	// Loop through each option and delete it
