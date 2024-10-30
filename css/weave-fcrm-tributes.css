@@ -88,6 +88,11 @@
   font-size: 10px;
 }
 
+/* Pin input */
+.firehawk-crm-tributes .pin-input .form-control {
+  padding: 0px !important;
+}
+
 /* Pagination */
 .fcrm-pagination .fcrm-pagination-pages li {
   border: 1px solid var(--fcrm-secondary-color) !important;
